@@ -7,5 +7,6 @@ public class Main {
         PlayerStats player = saveLoader.loadALL();
         System.out.println("Welcome back " + player.username);     
         player.render();
+        
     }
 }
