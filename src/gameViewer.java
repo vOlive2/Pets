@@ -6,7 +6,7 @@ public class gameViewer extends JPanel {
 	///////////////////////////
 	///      VARIABLES      ///
 	///////////////////////////
-    private final int pixelSize = 4;
+    private final int pixelSize = 3;
     public PlayerStats player;
     
     ///////////////////////////
@@ -58,8 +58,6 @@ public class gameViewer extends JPanel {
     		player.objects[player.x][player.y].onCollision();;
     	}
     }
-    
-    
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
