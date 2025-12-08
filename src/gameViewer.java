@@ -60,6 +60,8 @@ public class gameViewer extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        //world[y][x] = grassColors[((int)(Math.random() * 10))];
+
         g.setColor(player.colors.get("green"));
         g.fillRect(0, 0, player.displaySize*pixelSize, player.displaySize*pixelSize);
 
