@@ -4,11 +4,13 @@ public class colorSwitchRed implements Obj {
 	public void onCollision(PlayerStats p) {
 		System.out.println("SWITCH");
 		Color[] set = {
-			(new Color(000, 000, 000, 000)),
-			(new Color(000, 000, 000)),
-			(new Color(207, 33, 73)),
-			(new Color(122, 9, 35))
-		};
+			    new Color(0,0,0,0),
+			    new Color(80,35,35),
+			    new Color(255,190,190),
+			    new Color(240,140,140),
+			    new Color(200,90,90)
+			};
+
 		p.resetSprite(set);
 	}
 	public int getSize() {return 3;}

@@ -46,10 +46,10 @@ public class gameViewer extends JPanel {
     ///       METHODS       ///
     ///////////////////////////
     public void keepPlayerInBounds() {
-    	if(player.x < 5) player.x = 5;
-    	if(player.y < 5) player.y = 5;
-    	if(player.x > player.displaySize-5) player.x = player.displaySize-5;
-    	if(player.y > player.displaySize-5) player.y = player.displaySize-5;
+    	if(player.x < 12) player.x = 12;
+    	if(player.y < 12) player.y = 12;
+    	if(player.x > player.displaySize-12) player.x = player.displaySize-12;
+    	if(player.y > player.displaySize-12) player.y = player.displaySize-12;
     }
     public void movePlayer(int x, int y) {
     	player.x-=x*player.speed;
@@ -81,11 +81,11 @@ public class gameViewer extends JPanel {
         paintPlayer(g);
     }
     protected void paintPlayer(Graphics g) {
-    	for (int y = 0; y < 7; y++) {
-            for (int x = 0; x < 7; x++) {
+    	for (int y = 0; y < 8; y++) {
+            for (int x = 0; x < 8; x++) {
                	Color c = player.sprite[y][x];
                	g.setColor(c);
-               	g.fillRect((player.x-3+x)*pixelSize, (player.y-3+y)*pixelSize, pixelSize, pixelSize);           
+               	g.fillRect((player.x-6+x)*pixelSize, (player.y-6+y)*pixelSize, pixelSize, pixelSize);           
             }
         }
     }

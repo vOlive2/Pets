@@ -6,23 +6,27 @@ public class PlayerStats {
     ///      VARIABLES      ///
     ///////////////////////////
 	public String username;
-	public int pixelSize = 2;
+	public int pixelSize = 3;
 	public int coins;
 	Color[] s = {
-			(new Color(000, 000, 000, 000)),
-			(new Color(000, 000, 000)),
-			(new Color(255, 184, 211)),
-			(new Color(255, 115, 168)),
+		    new Color(0,0,0,0),       // 0 transparent  
+		    new Color(60,40,50),      // 1 outlines  
+		    new Color(255,190,215),   // 2 base  
+		    new Color(255,150,185),   // 3 mid shade  
 	};
-	Color sprite[][] = {
-		{s[0], s[0], s[1], s[1], s[1], s[0], s[0]},
-		{s[0], s[1], s[2], s[2], s[2], s[1], s[0]},
-		{s[1], s[2], s[3], s[2], s[3], s[2], s[1]},
-		{s[1], s[2], s[2], s[2], s[2], s[2], s[1]},
-		{s[1], s[3], s[2], s[2], s[2], s[3], s[1]},
-		{s[1], s[2], s[3], s[3], s[3], s[2], s[1]},
-		{s[0], s[1], s[1], s[1], s[1], s[1], s[0]},
+	Color[][] sprite = {
+		    {s[0], s[0], s[1], s[1], s[1], s[1], s[0], s[0]},
+		    {s[0], s[1], s[2], s[2], s[2], s[2], s[1], s[0]},
+		    {s[1], s[2], s[2], s[2], s[2], s[2], s[2], s[1]},
+		    {s[1], s[2], s[2], s[2], s[2], s[2], s[2], s[1]},
+		    {s[1], s[2], s[3], s[2], s[2], s[3], s[2], s[1]},
+		    {s[1], s[2], s[2], s[3], s[3], s[2], s[2], s[1]},
+		    {s[1], s[2], s[2], s[2], s[2], s[2], s[2], s[1]},
+		    {s[0], s[1], s[1], s[1], s[1], s[1], s[1], s[0]}
 	};
+
+
+
 	//defaults
 	public int displaySize;
 	public int x;
@@ -37,8 +41,8 @@ public class PlayerStats {
     ///////////////////////////
     public PlayerStats() {this(200);}
 	public PlayerStats(int d) {
-		x = 4;
-		y = 4;
+		x = 30;
+		y = 30;
 		speed = 2;
 		setColors();
 		
@@ -46,10 +50,13 @@ public class PlayerStats {
 		displaySize = d; 
 		world = new Color[displaySize][displaySize];
 		objects = new Obj[displaySize][displaySize];
-		objects[50][100] = new Coin();
-		objects[80][40] = new colorSwitchRed();
-		objects[100][130] = new colorSwitchGreen();
-		objects[150][76] = new colorSwitchBlue();
+		objects[50][30] = new Coin();
+		objects[50][50] = new colorSwitchRed();
+		objects[50][70] = new colorSwitchOrange();
+		objects[50][90] = new colorSwitchYellow();
+		objects[50][110] = new colorSwitchGreen();
+		objects[50][130] = new colorSwitchBlue();
+		objects[50][150] = new colorSwitchPurple();
 		
 		//Set to default color
 		for(int y = 0; y < displaySize; y++) {
@@ -72,14 +79,15 @@ public class PlayerStats {
     }
     public void resetSprite(Color[] spriteSet) {
     	s = spriteSet;
-    	Color newSprite[][] = {
-    			{s[0], s[0], s[1], s[1], s[1], s[0], s[0]},
-    			{s[0], s[1], s[2], s[2], s[2], s[1], s[0]},
-    			{s[1], s[2], s[3], s[2], s[3], s[2], s[1]},
-    			{s[1], s[2], s[2], s[2], s[2], s[2], s[1]},
-    			{s[1], s[3], s[2], s[2], s[2], s[3], s[1]},
-    			{s[1], s[2], s[3], s[3], s[3], s[2], s[1]},
-    			{s[0], s[1], s[1], s[1], s[1], s[1], s[0]},
+    	Color[][] newSprite = {
+    		    {s[0], s[0], s[1], s[1], s[1], s[1], s[0], s[0]},
+    		    {s[0], s[1], s[2], s[2], s[2], s[2], s[1], s[0]},
+    		    {s[1], s[2], s[2], s[2], s[2], s[2], s[2], s[1]},
+    		    {s[1], s[2], s[2], s[2], s[2], s[2], s[2], s[1]},
+    		    {s[1], s[2], s[3], s[2], s[2], s[3], s[2], s[1]},
+    		    {s[1], s[2], s[2], s[3], s[3], s[2], s[2], s[1]},
+    		    {s[1], s[2], s[2], s[2], s[2], s[2], s[2], s[1]},
+    		    {s[0], s[1], s[1], s[1], s[1], s[1], s[1], s[0]}
     	};
     	sprite = newSprite;
 
