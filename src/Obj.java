@@ -1,8 +1,8 @@
 import java.awt.Color;
 
 public interface Obj {
-	public Color getColor();
-	public void onCollision();
+	public void onCollision(PlayerStats p);
 	public int getSize();
+	public Color[][] getSprite();
 
 }

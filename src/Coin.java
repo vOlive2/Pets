@@ -1,8 +1,25 @@
 import java.awt.Color;
 
 public class Coin implements Obj {
-	Color c = new Color(255, 196, 0);
-	public Color getColor() {return c;}
-	public void onCollision() {System.out.print("COIN");}
-	public int getSize() {return 1;}
+	public void onCollision(PlayerStats p) {System.out.println("COIN");}
+	public int getSize() {return 3;}
+	public Color[][] getSprite() {
+		Color[] s = {
+    			(new Color(000, 000, 000, 000)),
+    			(new Color(000, 000, 000)),
+    			(new Color(252, 186, 3)),
+    			(new Color(204, 150, 0)),
+    	};
+    	Color set[][] = {
+			{s[0], s[1], s[1], s[1], s[1], s[1], s[0]},
+			{s[1], s[2], s[3], s[3], s[3], s[2], s[1]},
+			{s[1], s[2], s[3], s[3], s[2], s[2], s[1]},
+			{s[1], s[2], s[3], s[3], s[3], s[2], s[1]},
+			{s[1], s[2], s[2], s[3], s[3], s[2], s[1]},
+			{s[1], s[2], s[3], s[3], s[3], s[2], s[1]},
+			{s[0], s[1], s[1], s[1], s[1], s[1], s[0]},
+    	};
+    	return set;
+    
+	}
 }

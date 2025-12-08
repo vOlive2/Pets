@@ -6,7 +6,7 @@ public class gameViewer extends JPanel {
 	///////////////////////////
 	///      VARIABLES      ///
 	///////////////////////////
-    private final int pixelSize = 3;
+    private int pixelSize = 3;
     public PlayerStats player;
     
     ///////////////////////////
@@ -14,6 +14,7 @@ public class gameViewer extends JPanel {
     ///////////////////////////
     public gameViewer(PlayerStats p) {
     	player = p;
+        pixelSize = player.pixelSize;
 
         JFrame frame = new JFrame("Game Viewer");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -45,18 +46,16 @@ public class gameViewer extends JPanel {
     ///       METHODS       ///
     ///////////////////////////
     public void keepPlayerInBounds() {
-    	if(player.x < 1) player.x = 1;
-    	if(player.y < 1) player.y = 1;
-    	if(player.x > player.displaySize-1) player.x = player.displaySize-1;
-    	if(player.y > player.displaySize-1) player.y = player.displaySize-1;
+    	if(player.x < 5) player.x = 5;
+    	if(player.y < 5) player.y = 5;
+    	if(player.x > player.displaySize-5) player.x = player.displaySize-5;
+    	if(player.y > player.displaySize-5) player.y = player.displaySize-5;
     }
     public void movePlayer(int x, int y) {
     	player.x-=x*player.speed;
     	player.y-=y*player.speed;
     	keepPlayerInBounds();
-    	if(player.checkCollision()) {
-    		player.objects[player.x][player.y].onCollision();;
-    	}
+    	player.checkCollision();
     }
     @Override
     protected void paintComponent(Graphics g) {
@@ -67,14 +66,27 @@ public class gameViewer extends JPanel {
         for (int y = 0; y < player.world.length; y++) {
             for (int x = 0; x < player.world[0].length; x++) {
             	if (player.objects[y][x] != null) {
-                	Color c = player.objects[y][x].getColor();
-                	g.setColor(c);
-                	int size = player.objects[y][x].getSize()*pixelSize*2;
-                	g.fillRect(x*pixelSize, y*pixelSize, size, size);
+            		for (int y1 = 0; y1 < player.objects[y][x].getSize()*2+1; y1++) {
+                        for (int x1 = 0; x1 < player.objects[y][x].getSize()*2+1; x1++) {
+                        	Color c = player.objects[y][x].getSprite()[y1][x1];
+                        	g.setColor(c);
+                        	int size = player.objects[y][x].getSize();
+                        	g.fillRect((x-size+x1)*pixelSize, (y-size+y1)*pixelSize, pixelSize, pixelSize);
+                        	//if(player.y == y && player.x == x) {paintPlayer(g);}
+                        }
+            		}
                 }           
             }
         }
-        g.setColor(player.colors.get("player")); // player color
-        g.fillRect(player.x*pixelSize, player.y*pixelSize, pixelSize*2, pixelSize*2);
+        paintPlayer(g);
+    }
+    protected void paintPlayer(Graphics g) {
+    	for (int y = 0; y < 7; y++) {
+            for (int x = 0; x < 7; x++) {
+               	Color c = player.sprite[y][x];
+               	g.setColor(c);
+               	g.fillRect((player.x-3+x)*pixelSize, (player.y-3+y)*pixelSize, pixelSize, pixelSize);           
+            }
+        }
     }
 }
