@@ -1,16 +1,17 @@
+package objects;
 import java.awt.Color;
+import Main;
 
-public class colorSwitchYellow implements Obj {
+public class colorSwitchGreen implements Obj {
 	public void onCollision(PlayerStats p) {
 		System.out.println("SWITCH");
 		Color[] set = {
 			    new Color(0,0,0,0),
-			    new Color(90,80,20),
-			    new Color(255,255,190),
-			    new Color(255,240,130),
-			    new Color(230,200,50)
+			    new Color(40,60,40),
+			    new Color(190,255,200),
+			    new Color(140,230,150),
+			    new Color(90,170,100)
 			};
-
 
 		p.resetSprite(set);
 	}
@@ -18,9 +19,9 @@ public class colorSwitchYellow implements Obj {
 	public Color[][] getSprite() {
 		Color[] s = {
     			(new Color(000, 000, 000, 000)),
-    			(new Color(90,80,20)),
-    			(new Color(255,240,130)),
-    			(new Color(230,200,50)),
+    			(new Color(47, 77, 0)),
+    			(new Color(189, 240, 108)),
+    			(new Color(90,170,100)),
     	};
     	Color set[][] = {
 			{s[0], s[1], s[1], s[1], s[1], s[1], s[0]},

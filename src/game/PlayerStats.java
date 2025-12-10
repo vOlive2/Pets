@@ -1,3 +1,4 @@
+package game;
 import java.awt.Color;
 import java.util.HashMap;
 
@@ -9,17 +10,14 @@ public class PlayerStats {
 	public int pixelSize = 3;
 	public int coins;
 	Color[] grassColors = {
-		    new Color(215, 245, 178), // light pastel grass
-		    new Color(194, 237, 151), // soft green
-		    new Color(176, 229, 124), // mellow bright grass
-		    new Color(161, 219, 105), // warm natural green
-		    new Color(145, 209, 85),  // mid green
-		    new Color(126, 188, 73),  // earthy midtone
-		    new Color(106, 166, 62),  // slightly darker
-		    new Color(90, 145, 53),   // shadow grass
-		    new Color(74, 123, 44),   // deep shade
-		    new Color(59, 102, 35)    // darkest grass
+		    new Color(206, 233, 160), // warmer soft green
+		    new Color(192, 224, 136), // warmer mellow bright grass
+		    new Color(166, 205, 105), // warmer mid green
+		    new Color(148, 186, 92),  // warmer earthy midtone
 		};
+
+
+
 
 	Color[] s = {
 		    new Color(0,0,0,0),       // 0 transparent  
@@ -74,7 +72,7 @@ public class PlayerStats {
 		//Set to default color
 		for(int y = 0; y < displaySize; y++) {
         	for(int x = 0; x < displaySize; x++) {
-            	world[y][x] = grassColors[((int)(Math.random() * 10))];
+            	world[y][x] = grassColors[((int)(Math.random() * grassColors.length))];
             }
         }
     }

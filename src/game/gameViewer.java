@@ -1,3 +1,4 @@
+package game;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -61,10 +62,8 @@ public class gameViewer extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         //world[y][x] = grassColors[((int)(Math.random() * 10))];
-
-        g.setColor(player.colors.get("green"));
-        g.fillRect(0, 0, player.displaySize*pixelSize, player.displaySize*pixelSize);
-
+        paintGrass(g);
+        
         for (int y = 0; y < player.world.length; y++) {
             for (int x = 0; x < player.world[0].length; x++) {
             	if (player.objects[y][x] != null) {
@@ -81,6 +80,15 @@ public class gameViewer extends JPanel {
             }
         }
         paintPlayer(g);
+    }
+    protected void paintGrass(Graphics g) {
+    	for (int y = 0; y < player.world.length; y++) {
+            for (int x = 0; x < player.world.length; x++) {
+               	Color c = player.world[y][x];
+               	g.setColor(c);
+            	g.fillRect(x*pixelSize, y*pixelSize, pixelSize, pixelSize);
+            }
+        }
     }
     protected void paintPlayer(Graphics g) {
     	for (int y = 0; y < 8; y++) {

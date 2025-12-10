@@ -1,3 +1,4 @@
+package objects;
 import java.awt.Color;
 
 public class Coin implements Obj {
