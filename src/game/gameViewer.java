@@ -9,6 +9,9 @@ public class gameViewer extends JPanel {
 	///////////////////////////
     private int pixelSize = 3;
     public PlayerStats player;
+    public int cx;
+    public int cy;
+
     
     ///////////////////////////
     ///    CONSTRUCTORS     ///
@@ -16,12 +19,14 @@ public class gameViewer extends JPanel {
     public gameViewer(PlayerStats p) {
     	player = p;
         pixelSize = player.pixelSize;
-
+        cx = player.x;
+        cy = player.y;
+        
         JFrame frame = new JFrame("Game Viewer");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        int width = p.world[0].length * pixelSize;
-        int height = p.world.length * pixelSize;
+        int width = 50 * pixelSize;
+        int height = 50 * pixelSize;
         
         frame.setSize(width + 16, height + 39);
         frame.add(this);
@@ -52,9 +57,18 @@ public class gameViewer extends JPanel {
     	if(player.x > player.displaySize-12) player.x = player.displaySize-12;
     	if(player.y > player.displaySize-12) player.y = player.displaySize-12;
     }
+    public void keepCamInBounds() {
+    	if(cx < 25) cx = 25;
+    	if(cy < 25) cy = 25;
+    	if(cx > player.displaySize-25) cx = player.displaySize-25;
+    	if(cy > player.displaySize-25) cy = player.displaySize-25;
+    }
     public void movePlayer(int x, int y) {
     	player.x-=x*player.speed;
     	player.y-=y*player.speed;
+    	cx-=x*player.speed;
+    	cy-=y*player.speed;
+    	keepCamInBounds();
     	keepPlayerInBounds();
     	player.checkCollision();
     }
@@ -64,8 +78,8 @@ public class gameViewer extends JPanel {
         //world[y][x] = grassColors[((int)(Math.random() * 10))];
         paintGrass(g);
         
-        for (int y = 0; y < player.world.length; y++) {
-            for (int x = 0; x < player.world[0].length; x++) {
+        for (int y = cy-25; y < cy+25; y++) {
+            for (int x = cx-25; x < cx+25; x++) {
             	if (player.objects[y][x] != null) {
             		for (int y1 = 0; y1 < player.objects[y][x].getSize()*2+1; y1++) {
                         for (int x1 = 0; x1 < player.objects[y][x].getSize()*2+1; x1++) {
@@ -73,8 +87,9 @@ public class gameViewer extends JPanel {
                         	g.setColor(c);
                         	int size = player.objects[y][x].getSize();
                         	g.fillRect((x-size+x1)*pixelSize, (y-size+y1)*pixelSize, pixelSize, pixelSize);
-                        	//if(player.y == y && player.x == x) {paintPlayer(g);}
-                        }
+                        /*	//int sx = (x - (cx - 25)) * pixelSize;
+                            //int sy = (y - (cy - 25)) * pixelSize;
+                            //g.fillRect(sx, sy, pixelSize, pixelSize);   */                     }
             		}
                 }           
             }

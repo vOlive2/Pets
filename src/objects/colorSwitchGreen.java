@@ -1,6 +1,6 @@
 package objects;
 import java.awt.Color;
-import Main;
+import game.PlayerStats;
 
 public class colorSwitchGreen implements Obj {
 	public void onCollision(PlayerStats p) {

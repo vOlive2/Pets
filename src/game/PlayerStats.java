@@ -1,19 +1,19 @@
 package game;
 import java.awt.Color;
 import java.util.HashMap;
+import objects.*;
+
 
 public class PlayerStats {
 	///////////////////////////
     ///      VARIABLES      ///
     ///////////////////////////
 	public String username;
-	public int pixelSize = 3;
+	public int pixelSize = 5;
 	public int coins;
 	Color[] grassColors = {
-		    new Color(206, 233, 160), // warmer soft green
-		    new Color(192, 224, 136), // warmer mellow bright grass
-		    new Color(166, 205, 105), // warmer mid green
-		    new Color(148, 186, 92),  // warmer earthy midtone
+			new Color(178, 236, 150), // soft warm grass-light (still bright but not neon)
+			new Color(148, 220, 118)  // healthy bright grass-green (natural & vivid)
 		};
 
 
@@ -68,6 +68,7 @@ public class PlayerStats {
 		objects[50][110] = new colorSwitchGreen();
 		objects[50][130] = new colorSwitchBlue();
 		objects[50][150] = new colorSwitchPurple();
+		objects[100][100] = new tree();
 		
 		//Set to default color
 		for(int y = 0; y < displaySize; y++) {
