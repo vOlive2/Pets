@@ -5,7 +5,7 @@ public class saveLoader {
     private static final Preferences prefs = Preferences.userNodeForPackage(saveLoader.class);
 
     public static PlayerStats loadALL() {
-    	PlayerStats player = new PlayerStats();
+    	PlayerStats player = new PlayerStats(1000);
     	player.username = prefs.get("username", "Guest Player");
         player.coins = prefs.getInt("coins", 0);
         return player;

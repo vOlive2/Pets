@@ -1,5 +1,7 @@
 package game;
-import java.awt.Color;
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.util.HashMap;
 import objects.*;
 
@@ -14,11 +16,7 @@ public class PlayerStats {
 	Color[] grassColors = {
 			new Color(178, 236, 150), // soft warm grass-light (still bright but not neon)
 			new Color(148, 220, 118)  // healthy bright grass-green (natural & vivid)
-		};
-
-
-
-
+	};
 	Color[] s = {
 		    new Color(0,0,0,0),       // 0 transparent  
 		    new Color(60,40,50),      // 1 outlines  
@@ -37,7 +35,6 @@ public class PlayerStats {
 	};
 
 
-
 	//defaults
 	public int displaySize;
 	public int x;
@@ -52,8 +49,8 @@ public class PlayerStats {
     ///////////////////////////
     public PlayerStats() {this(200);}
 	public PlayerStats(int d) {
-		x = 30;
-		y = 30;
+		x = 100;
+		y = 100;
 		speed = 2;
 		setColors();
 		
